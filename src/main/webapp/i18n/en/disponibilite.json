@@ -1,0 +1,24 @@
+{
+    "iodevApp": {
+        "disponibilite" : {
+            "home": {
+                "title": "Disponibilites",
+                "createLabel": "Create a new Disponibilite",
+                "createOrEditLabel": "Create or edit a Disponibilite",
+                "search": "Search for Disponibilite"
+            },
+            "created": "A new Disponibilite is created with identifier {{ param }}",
+            "updated": "A Disponibilite is updated with identifier {{ param }}",
+            "deleted": "A Disponibilite is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Disponibilite {{ id }}?"
+            },
+            "detail": {
+                "title": "Disponibilite"
+            },
+            "lastUpdate": "Last Update",
+            "congeDispo": "Conge Dispo",
+            "user": "User"
+        }
+    }
+}

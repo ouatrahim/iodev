@@ -1,0 +1,92 @@
+<div has-any-authority="ROLE_ADMIN,ROLE_DG">
+    <h2 translate="iodevApp.conge.home.title">Conges</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <!--<div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="conge.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="iodevApp.conge.home.createLabel">
+                        Create new Conge
+                    </span>
+                </button>
+            </div>-->
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'iodevApp.conge.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                   <!-- <th><span translate="global.field.id">ID</span></th> -->
+                    <th><span translate="iodevApp.conge.libelle">Libelle</span></th>
+                    <th><span translate="iodevApp.conge.type">Type</span></th>
+                    <th><span translate="iodevApp.conge.dateDemande">Date Demande</span></th>
+                    <th><span translate="iodevApp.conge.dateDebut">Date Debut</span></th>
+                    <th><span translate="iodevApp.conge.dateFin">Date Fin</span></th>
+                    <th><span translate="iodevApp.conge.valRH">Val RH</span></th>
+                    <th><span translate="iodevApp.conge.valDG">Val DG</span></th>
+                    <th><span translate="iodevApp.conge.derniereModification">Derniere Modification</span></th>
+                    <th><span translate="iodevApp.conge.user">User</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="conge in vm.conges track by conge.id">
+                   <!-- <td><a ui-sref="conge-detail({id:conge.id})">{{conge.id}}</a></td>-->
+                    
+                    <td>{{conge.libelle}}</td>
+                    <td>{{conge.type}}</td>
+                    <td>{{conge.dateDemande | date:'medium'}}</td>
+                    <td>{{conge.dateDebut | date:'medium'}}</td>
+                    <td>{{conge.dateFin | date:'medium'}}</td>
+                    <td class="text-center"><i class="glyphicon" ng-class="{'glyphicon-ok text-success': conge.valRH, 'glyphicon-remove text-danger': !conge.valRH}"></i></td>
+                    <td class="text-center"><i class="glyphicon" ng-class="{'glyphicon-ok text-success': conge.valDG, 'glyphicon-remove text-danger': !conge.valDG}"></i></td>
+                    <td>{{conge.derniereModification | date:'medium'}}</td>
+                    <td>
+                        {{conge.user.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="conge-detail({id:conge.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="conge.edit({id:conge.id})"
+                                    class="btn btn-primary btn-sm" ng-if="(conge.valDG&&conge.valRH)!=true">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <!--<button type="submit"
+                                    ui-sref="conge.delete({id:conge.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

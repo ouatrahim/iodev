@@ -1,0 +1,23 @@
+{
+    "iodevApp": {
+        "embauche" : {
+            "home": {
+                "title": "Embauches",
+                "createLabel": "Créer un nouveau Embauche",
+                "createOrEditLabel": "Créer ou éditer un Embauche",
+                "search": "Recherche pour Embauche"
+            },
+            "created": "Un nouveau Embauche a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Embauche avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Embauche avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Embauche {{ id }} ?"
+            },
+            "detail": {
+                "title": "Embauche"
+            },
+            "dateEmbauche": "Date Embauche",
+            "user": "User"
+        }
+    }
+}

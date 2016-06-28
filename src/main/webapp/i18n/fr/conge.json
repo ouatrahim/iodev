@@ -1,0 +1,30 @@
+{
+    "iodevApp": {
+        "conge" : {
+            "home": {
+                "title": "Conges",
+                "createLabel": "Créer un nouveau Conge",
+                "createOrEditLabel": "Créer ou éditer un Conge",
+                "search": "Recherche pour Conge"
+            },
+            "created": "Un nouveau Conge a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Conge avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Conge avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Conge {{ id }} ?"
+            },
+            "detail": {
+                "title": "Conge"
+            },
+            "libelle": "Libelle",
+            "type": "Type",
+            "dateDemande": "Date Demande",
+            "dateDebut": "Date Debut",
+            "dateFin": "Date Fin",
+            "valRH": "Val RH",
+            "valDG": "Val DG",
+            "derniereModification": "Derniere Modification",
+            "user": "User"
+        }
+    }
+}

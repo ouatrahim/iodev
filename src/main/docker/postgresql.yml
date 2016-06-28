@@ -1,0 +1,12 @@
+version: '2'
+services:
+    iodev-postgresql:
+        container_name: iodev-postgresql
+        image: postgres:9.5.2
+        # volumes:
+        #     - ~/volumes/jhipster/iodev/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=iodev
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

@@ -1,0 +1,22 @@
+
+<div>
+    <h2><span translate="iodevApp.embauche.detail.title">Embauche</span> {{vm.embauche.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="iodevApp.embauche.dateEmbauche">Date Embauche</span></dt>
+        <dd>
+            <span>{{vm.embauche.dateEmbauche | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="iodevApp.embauche.user">User</span></dt>
+        <dd>
+            {{vm.embauche.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

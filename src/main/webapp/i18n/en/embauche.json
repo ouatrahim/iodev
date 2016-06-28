@@ -1,0 +1,23 @@
+{
+    "iodevApp": {
+        "embauche" : {
+            "home": {
+                "title": "Embauches",
+                "createLabel": "Create a new Embauche",
+                "createOrEditLabel": "Create or edit a Embauche",
+                "search": "Search for Embauche"
+            },
+            "created": "A new Embauche is created with identifier {{ param }}",
+            "updated": "A Embauche is updated with identifier {{ param }}",
+            "deleted": "A Embauche is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Embauche {{ id }}?"
+            },
+            "detail": {
+                "title": "Embauche"
+            },
+            "dateEmbauche": "Date Embauche",
+            "user": "User"
+        }
+    }
+}

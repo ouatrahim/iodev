@@ -1,0 +1,25 @@
+{
+    "iodevApp": {
+        "salaire" : {
+            "home": {
+                "title": "Salaires",
+                "createLabel": "Créer un nouveau Salaire",
+                "createOrEditLabel": "Créer ou éditer un Salaire",
+                "search": "Recherche pour Salaire"
+            },
+            "created": "Un nouveau Salaire a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Salaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Salaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Salaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Salaire"
+            },
+            "dateAttribution": "Date Attribution",
+            "montantSalaire": "Montant Salaire",
+            "montantSalaireActuel": "Montant Salaire Actuel",
+            "user": "User"
+        }
+    }
+}

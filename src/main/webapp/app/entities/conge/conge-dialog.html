@@ -1,0 +1,297 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCongeLabel" translate="iodevApp.conge.home.createOrEditLabel">Create or edit a Conge</h4>
+    </div>
+    <div class="modal-body" ng-if="vm.conge.id!=null">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.conge.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.conge.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.libelle" for="field_libelle">Libelle</label>
+            <input type="text" class="form-control" name="libelle" id="field_libelle"
+                    ng-model="vm.conge.libelle"
+                    required ng-maxlength="50" readonly />
+            <div ng-show="editForm.libelle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.libelle.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.libelle.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label" translate="iodevApp.conge.type" for="field_type">Type</label>
+            <!--<input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="vm.conge.type"
+                    required />-->
+            <p class="text-center"> Congé Payé </p><input type="radio" class="form-control" name="type" id="field_type"  value="Congé Payé" ng-model="vm.conge.type" readonly /><br/>
+            <p class="text-center"> Congé Non Payé </p><input type="radio" class="form-control" name="type" id="field_type" value="Congé Non Payé" checked="checked" ng-model="vm.conge.type" readonly /><br/>
+            <p class="text-center"> Congé Exceptionnel </p><input type="radio" class="form-control"  name="type" id="field_type" value="Congé Exceptionnel" ng-model="vm.conge.type" readonly />
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.type.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.dateDemande" for="field_dateDemande">Date Demande</label>
+                <div class="input-group">
+                    <input id="field_dateDemande" type="text" class="form-control" name="dateDemande" datetime-picker="{{dateformat}}" ng-model="vm.conge.dateDemande" is-open="vm.datePickerOpenStatus.dateDemande"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDemande')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateDemande.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateDemande.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateDemande.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>-->
+        <div class="form-group" >
+            <label class="control-label" translate="iodevApp.conge.dateDebut" for="field_dateDebut">Date Debut</label>
+                <div class="input-group">
+                    <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" datetime-picker="{{dateformat}}" ng-model="vm.conge.dateDebut" is-open="vm.datePickerOpenStatus.dateDebut"
+                    required readonly  />
+                    <!--<span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>-->
+                </div>
+            <div ng-show="editForm.dateDebut.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateDebut.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.dateFin" for="field_dateFin">Date Fin</label>
+                <div class="input-group">
+                    <input id="field_dateFin" type="text" class="form-control" name="dateFin" datetime-picker="{{dateformat}}" ng-model="vm.conge.dateFin" is-open="vm.datePickerOpenStatus.dateFin"
+                    required readonly />
+                    <!--<span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>-->
+                </div>
+            <div ng-show="editForm.dateFin.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateFin.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" has-authority="ROLE_ADMIN">
+            <label class="control-label" translate="iodevApp.conge.valRH" for="field_valRH">Validation du RH</label>
+            <input type="checkbox" class="form-control" name="valRH" id="field_valRH"
+                    ng-model="vm.conge.valRH"
+                     />
+            <div ng-show="editForm.valRH.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.valRH.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" has-authority="ROLE_DG">
+            <label class="control-label" translate="iodevApp.conge.valDG" for="field_valDG">Validation du DG</label>
+            <input type="checkbox" class="form-control" name="valDG" id="field_valDG"
+                    ng-model="vm.conge.valDG"
+                     />
+            <div ng-show="editForm.valDG.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.valDG.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.derniereModification" for="field_derniereModification">Derniere Modification</label>
+                <div class="input-group">
+                    <input id="field_derniereModification" type="text" class="form-control" name="derniereModification" datetime-picker="{{dateformat}}" ng-model="vm.conge.derniereModification" is-open="vm.datePickerOpenStatus.derniereModification"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('derniereModification')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>-->
+
+       <!-- <div class="form-group" has-role="ROLE_ADMIN">
+            <label translate="iodevApp.conge.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.conge.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>-->
+    </div>
+    <div class="modal-body" ng-if="vm.conge.id==null">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.conge.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.conge.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.libelle" for="field_libelle">Libelle</label>
+            <input type="text" class="form-control" name="libelle" id="field_libelle"
+                    ng-model="vm.conge.libelle"
+                    required ng-maxlength="50" />
+            <div ng-show="editForm.libelle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.libelle.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.libelle.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.type" for="field_type">Type</label>
+            <!--<input type="text" class="form-control" name="type" id="field_type"
+                    ng-model="vm.conge.type"
+                    required />-->
+            <p class="text-center"> Congé Payé </p><input type="radio" class="form-control" name="type" id="field_type"  value="Congé Payé" ng-model="vm.conge.type" /><br/>
+            <p class="text-center"> Congé Non Payé </p><input type="radio" class="form-control" name="type" id="field_type" value="Congé Non Payé" checked="checked" ng-model="vm.conge.type" /><br/>
+            <p class="text-center"> Congé Exceptionnel </p><input type="radio" class="form-control"  name="type" id="field_type" value="Congé Exceptionnel" ng-model="vm.conge.type" />
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.type.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.dateDemande" for="field_dateDemande">Date Demande</label>
+                <div class="input-group">
+                    <input id="field_dateDemande" type="text" class="form-control" name="dateDemande" datetime-picker="{{dateformat}}" ng-model="vm.conge.dateDemande" is-open="vm.datePickerOpenStatus.dateDemande"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDemande')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateDemande.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateDemande.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateDemande.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.dateDebut" for="field_dateDebut">Date Debut</label>
+                <div class="input-group">
+                    <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" datetime-picker="{{dateformat}}" ng-model="vm.conge.dateDebut" is-open="vm.datePickerOpenStatus.dateDebut"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateDebut.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateDebut.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateDebut.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.dateFin" for="field_dateFin">Date Fin</label>
+                <div class="input-group">
+                    <input id="field_dateFin" type="text" class="form-control" name="dateFin" datetime-picker="{{dateformat}}" ng-model="vm.conge.dateFin" is-open="vm.datePickerOpenStatus.dateFin"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateFin.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateFin.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateFin.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" has-authority="ROLE_ADMIN">
+            <label class="control-label" translate="iodevApp.conge.valRH" for="field_valRH">Validation du RH</label>
+            <input type="checkbox" class="form-control" name="valRH" id="field_valRH"
+                    ng-model="vm.conge.valRH"
+                     />
+            <div ng-show="editForm.valRH.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.valRH.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" has-authority="ROLE_DG">
+            <label class="control-label" translate="iodevApp.conge.valDG" for="field_valDG">Validation du DG</label>
+            <input type="checkbox" class="form-control" name="valDG" id="field_valDG"
+                    ng-model="vm.conge.valDG"
+                     />
+            <div ng-show="editForm.valDG.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.valDG.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="control-label" translate="iodevApp.conge.derniereModification" for="field_derniereModification">Derniere Modification</label>
+                <div class="input-group">
+                    <input id="field_derniereModification" type="text" class="form-control" name="derniereModification" datetime-picker="{{dateformat}}" ng-model="vm.conge.derniereModification" is-open="vm.datePickerOpenStatus.derniereModification"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('derniereModification')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>-->
+
+       <!-- <div class="form-group" has-role="ROLE_ADMIN">
+            <label translate="iodevApp.conge.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.conge.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>-->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

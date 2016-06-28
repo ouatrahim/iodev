@@ -1,0 +1,26 @@
+
+<div>
+    <h2><span translate="iodevApp.disponibilite.detail.title">Disponibilite</span> {{vm.disponibilite.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="iodevApp.disponibilite.lastUpdate">Last Update</span></dt>
+        <dd>
+            <span>{{vm.disponibilite.lastUpdate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="iodevApp.disponibilite.congeDispo">Conge Dispo</span></dt>
+        <dd>
+            <span>{{vm.disponibilite.congeDispo}}</span>
+        </dd>
+        <dt><span translate="iodevApp.disponibilite.user">User</span></dt>
+        <dd>
+            {{vm.disponibilite.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

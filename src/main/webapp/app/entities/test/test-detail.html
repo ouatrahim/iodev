@@ -1,0 +1,18 @@
+
+<div>
+    <h2><span translate="iodevApp.test.detail.title">Test</span> {{vm.test.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="iodevApp.test.testit">Testit</span></dt>
+        <dd>
+            <span>{{vm.test.testit}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,30 @@
+{
+    "iodevApp": {
+        "conge" : {
+            "home": {
+                "title": "Conges",
+                "createLabel": "Create a new Conge",
+                "createOrEditLabel": "Create or edit a Conge",
+                "search": "Search for Conge"
+            },
+            "created": "A new Conge is created with identifier {{ param }}",
+            "updated": "A Conge is updated with identifier {{ param }}",
+            "deleted": "A Conge is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Conge {{ id }}?"
+            },
+            "detail": {
+                "title": "Conge"
+            },
+            "libelle": "Libelle",
+            "type": "Type",
+            "dateDemande": "Date Demande",
+            "dateDebut": "Date Debut",
+            "dateFin": "Date Fin",
+            "valRH": "Val RH",
+            "valDG": "Val DG",
+            "derniereModification": "Derniere Modification",
+            "user": "User"
+        }
+    }
+}

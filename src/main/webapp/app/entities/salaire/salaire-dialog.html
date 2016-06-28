@@ -1,0 +1,80 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySalaireLabel" translate="iodevApp.salaire.home.createOrEditLabel">Create or edit a Salaire</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.salaire.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.salaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.salaire.dateAttribution" for="field_dateAttribution">Date Attribution</label>
+                <div class="input-group">
+                    <input id="field_dateAttribution" type="text" class="form-control" name="dateAttribution" uib-datepicker-popup="{{dateformat}}" ng-model="vm.salaire.dateAttribution" is-open="vm.datePickerOpenStatus.dateAttribution"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateAttribution')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateAttribution.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateAttribution.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.salaire.montantSalaire" for="field_montantSalaire">Montant Salaire</label>
+            <input type="number" class="form-control" name="montantSalaire" id="field_montantSalaire"
+                    ng-model="vm.salaire.montantSalaire"
+                    required />
+            <div ng-show="editForm.montantSalaire.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.montantSalaire.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.montantSalaire.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="iodevApp.salaire.montantSalaireActuel" for="field_montantSalaireActuel">Montant Salaire Actuel</label>
+            <input type="number" class="form-control" name="montantSalaireActuel" id="field_montantSalaireActuel"
+                    ng-model="vm.salaire.montantSalaireActuel"
+                    required />
+            <div ng-show="editForm.montantSalaireActuel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.montantSalaireActuel.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.montantSalaireActuel.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="iodevApp.salaire.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.salaire.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

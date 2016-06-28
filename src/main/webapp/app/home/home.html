@@ -1,0 +1,156 @@
+<div ng-cloak>
+    <div class="row">
+        
+        <div class="col-md-12">
+           
+            
+            <h1>Gestion des congés de la Saphyto</h1>
+            
+            <div ng-switch="vm.isAuthenticated()">
+                
+                <div class="alert alert-warning" ng-switch-when="false">
+                    <p>Veuillez vous <a class="alert-link" href="" ng-click="vm.login()">identifier à l'aide de votre matricule</a></p>
+                </div>
+                
+                <div class="alert alert-success" ng-switch-when="true">
+                    <h4>Bienvenue {{vm.account.firstName}} {{vm.account.lastName}} </h4> 
+                </div>
+                <br/>
+                <br/>
+             
+                <div class="row">
+                    <div class="col-md-6" ng-switch-when="true">
+                    <h3>Mon Salaire</h3>
+                
+                    <br/>
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Date Attribution</th>
+                                    <th>Montant Salaire</th>
+                                    <th>Montant Salaire Actuel</th>
+                                    
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="salaire in vm.salaires track by salaire.id" ng-if="salaire.user.login==vm.account.login"">
+                                    
+                                    <td>{{salaire.dateAttribution | date:'mediumDate'}}</td>
+                                    <td><h4><span class="label label-pill label-success">{{salaire.montantSalaire}} F. CFA</span></h4></td>
+                                    <td><h4><span class="label label-pill label-warning">{{salaire.montantSalaireActuel}} F. CFA</span></h4></td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <br/>
+                    </div>
+                
+                    <div class="col-md-3 col-md-offset-2" ng-switch-when="true">
+                    <h3>Mes Disponibilités</h3><br/>
+                        <div ng-repeat="disponibilite in vm.disponibilites track by disponibilite.id" ng-if="disponibilite.user.login==vm.account.login"">
+                            <div class="table-responsive">
+                                <table class="jh-table table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Jours disponibles</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><h4><span class="col-md-12 label label-pill label-danger">{{disponibilite.congeDispo}} Jours</span></h4></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        
+                    </div>
+                </div>
+                </div>
+                <br/><br/>
+                <div class="row">
+                <div class="col-md-12" ng-switch-when="true">
+                    
+                     <a ui-sref="conge.new" class="btn btn-primary btn-raised btn-block">Demander un congé</a>                  
+                </div>
+                </div>
+                <br/>
+                
+                <div class="row">
+                    <div class="col-md-12" ng-switch-when="true">
+                    <h3>Liste de mes demandes de congés</h3>
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <thead>
+                                <tr>
+                                   <!-- <th><span translate="global.field.id">ID</span></th> -->
+                                    <th>Libelle</th>
+                                    <th>Type</th>
+                                    <th>Date Demande</span></th>
+                                    <th>Date Debut</th>
+                                    <th>Date Fin</th>
+                                    <th>Val RH</th>
+                                    <th>Val DG</th>
+                                    <th>Derniere Modification</th>
+                                    <th>User</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            -<tbody>
+                                <tr ng-repeat="conge in vm.conges track by conge.id" ng-if="conge.user.login==vm.account.login"">
+                            
+                          
+                                    <td >{{conge.libelle}}</td>
+                                            <td>{{conge.type}}</td>
+                                            <td>{{conge.dateDemande | date:'medium'}}</td>
+                                            <td>{{conge.dateDebut | date:'medium'}}</td>
+                                            <td>{{conge.dateFin | date:'medium'}}</td>
+                                            <td class="text-center"><i class="glyphicon" ng-class="{'glyphicon-ok text-success': conge.valRH, 'glyphicon-remove text-danger': !conge.valRH}"></i></td>
+                                            <td class="text-center"><i class="glyphicon" ng-class="{'glyphicon-ok text-success': conge.valDG, 'glyphicon-remove text-danger': !conge.valDG}"></i></td>
+                                            <td>{{conge.derniereModification | date:'medium'}}</td>
+                                            <td>
+                                                {{conge.user.login}}
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="btn-group flex-btn-group-container">
+                                                    <button type="submit"
+                                                            ui-sref="conge-detail({id:conge.id})"
+                                                            class="btn btn-info btn-sm">
+                                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                                        <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                                                    </button>
+                                                    <!--<button type="submit"
+                                                            ui-sref="conge.edit({id:conge.id})"
+                                                            class="btn btn-primary btn-sm">
+                                                        <span class="glyphicon glyphicon-pencil"></span>
+                                                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                                                    </button>-->
+                                                    <button type="submit"
+                                                            ui-sref="conge.delete({id:conge.id})"
+                                                            class="btn btn-danger btn-sm" ng-if="(conge.valDG&&conge.valRH)!=true">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                                        <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div
+                    
+                </div>
+                
+            </div>
+            </div>
+            
+        </div>
+        
+        
+</div>

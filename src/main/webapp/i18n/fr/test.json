@@ -1,0 +1,22 @@
+{
+    "iodevApp": {
+        "test" : {
+            "home": {
+                "title": "Tests",
+                "createLabel": "Créer un nouveau Test",
+                "createOrEditLabel": "Créer ou éditer un Test",
+                "search": "Recherche pour Test"
+            },
+            "created": "Un nouveau Test a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Test avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Test avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Test {{ id }} ?"
+            },
+            "detail": {
+                "title": "Test"
+            },
+            "testit": "Testit"
+        }
+    }
+}
